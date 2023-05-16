@@ -10,6 +10,7 @@ datasource db {
 model Product {
     id            Int    @id @default(autoincrement())
     productName   String
+    price         Int
     QTY           Int
     productStatus String
 }
