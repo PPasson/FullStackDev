@@ -1,11 +1,17 @@
-import express from 'express';
-import orderRouter from './routes/orderRouter';
-
+const express = require("express");
+const dotenv = require("dotenv");
 const app = express();
-const port = 3000;
+dotenv.config();
+const PORT = process.env.ORDER_SERVER_PORT || 3000;
 
-app.use('/order', orderRouter);
+//Router
+app.use("/orders", require("./src/routes/orderRouter"));
 
-app.listen(port, () => {
-  console.log(`Order server listening at http://localhost:${port}`);
+// Index Path
+app.get("/", (req, res) => {
+  res.send("Hello from ORDER server!");
+});
+
+app.listen(PORT, () => {
+  console.log(`Order server listening at http://localhost:${PORT}`);
 });
