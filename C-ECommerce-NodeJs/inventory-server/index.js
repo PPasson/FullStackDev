@@ -1,11 +1,17 @@
-import express from 'express';
-import inventoryRouter from './routes/inventoryRouter';
-
+const express = require("express");
+const dotenv = require("dotenv");
 const app = express();
-const port = 3000;
+dotenv.config();
+const PORT = process.env.INVENTORY_SERVER_PORT || 3000;
 
-app.use('/inventory', inventoryRouter);
+//Router
+app.use("/inventory", require("./src/routes/inventoryRouter"));
 
-app.listen(port, () => {
-  console.log(`Inventory server listening at http://localhost:${port}`);
+// Index Path
+app.get("/", (req, res) => {
+  res.send("Hello from INVENTORY server!");
+});
+
+app.listen(PORT, () => {
+  console.log(`Inventory server listening at http://localhost:${PORT}`);
 });
