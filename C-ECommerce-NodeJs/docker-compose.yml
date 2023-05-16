@@ -1,0 +1,31 @@
+version: '3'
+services:
+  product-server:
+    build:
+      context: ./product-server
+      dockerfile: Dockerfile
+    ports:
+      - 3001:3000
+    networks:
+      - backend
+
+  order-server:
+    build:
+      context: ./order-server
+      dockerfile: Dockerfile
+    ports:
+      - 3002:3000
+    networks:
+      - backend
+
+  inventory-server:
+    build:
+      context: ./inventory-server
+      dockerfile: Dockerfile
+    ports:
+      - 3003:3000
+    networks:
+      - backend
+
+networks:
+  backend:
