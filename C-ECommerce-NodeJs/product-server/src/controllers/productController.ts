@@ -1,7 +1,7 @@
 const prisma = require("../prisma/prisma");
 
 const productController = {
-  async getAllProducts(req, res) {
+  async getAllProducts(req: any, res: any) {
     try {
       const products = await prisma.product.findMany();
       await prisma.$disconnect();
@@ -12,7 +12,7 @@ const productController = {
     }
   },
 
-  async getProductById(req, res) {
+  async getProductById(req: any, res: any) {
     try {
       const { id } = req.params;
       const product = await prisma.product.findUnique({
