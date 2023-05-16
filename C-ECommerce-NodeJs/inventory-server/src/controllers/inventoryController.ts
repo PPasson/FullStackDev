@@ -36,6 +36,10 @@ const inventoryController = {
       res.status(500).json({ code: 500, message: "Internal server error" });
     }
   },
+
+  async updateProduct(req: any, res: any){
+    //to do
+  }
 };
 
 export default inventoryController;
