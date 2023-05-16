@@ -1,11 +1,17 @@
-import express from 'express';
-import productRouter from './routes/productRouter';
-
+const express = require("express");
+const dotenv = require("dotenv");
+dotenv.config();
+const productRouter = require("./routes/productRouter")
+const PORT = process.env.PRODUCT_SERVER_PORT || 3000;
 const app = express();
-const port = 3000;
 
-app.use('/product', productRouter);
+app.use("/products", productRouter);
 
-app.listen(port, () => {
-  console.log(`Product server listening at http://localhost:${port}`);
+// Index Path
+app.get("/", (req, res) => {
+  res.send("Hello from PRODUCT server!");
+});
+
+app.listen(PORT, () => {
+  console.log(`Product server listening at http://localhost:${PORT}`);
 });

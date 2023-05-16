@@ -1,10 +1,8 @@
 // product-server/src/routes/productsRouter.ts
-import express, { Router } from 'express';
-import { getAllProducts, getProductById } from '../controllers/productController';
+const router = require("express").Router();
+const productController  =  require('../controllers/productController');
 
-const router: Router = express.Router();
-
-router.get('/', getAllProducts);
-router.get('/:id', getProductById);
+router.get('/', productController.getAllProducts);
+router.get('/:id', productController.getProductById);
 
 export default router;
