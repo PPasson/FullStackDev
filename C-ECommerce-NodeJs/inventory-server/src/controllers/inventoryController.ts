@@ -7,7 +7,7 @@ const inventoryController = {
 
   async getAllProducts(req: any, res: any) {
     try {
-      const products = await prisma.inventorie.findMany();
+      const products = await prisma.product.findMany();
       await prisma.$disconnect();
       res.status(200).json({code: 200, message: "success", data: products});
     } catch (err) {
@@ -19,17 +19,17 @@ const inventoryController = {
   async getProductById(req: any, res: any) {
     try {
       const { id } = req.params;
-      const inventorie = await prisma.inventorie.findUnique({
+      const product = await prisma.product.findUnique({
         where: {
           id: parseInt(id),
         },
       });
 
       await prisma.$disconnect();
-      if(!inventorie){
+      if(!product){
         res.status(404).json({ code: 404, message: "Inventory not found" });
       }
-      res.status(200).json({ code: 200, message: "success", data: inventorie });      
+      res.status(200).json({ code: 200, message: "success", data: product });      
 
     } catch (err) {
       console.error(err);
